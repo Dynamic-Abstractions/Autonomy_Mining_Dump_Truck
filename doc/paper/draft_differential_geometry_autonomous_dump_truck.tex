@@ -1,0 +1,48 @@
+%===============================================================================
+% ifacconf.tex 2025-07-31 jpuente  
+% Template for IFAC meeting papers
+% Copyright (c) 2025 International Federation of Automatic Control
+%===============================================================================
+\documentclass{ifacconf}
+
+\usepackage{graphicx}
+\usepackage{natbib}
+%===============================================================================
+\begin{document}
+\begin{frontmatter}
+
+\title{Is MPC Necessary? A Comparative Study of Flatness Control for Lateral Mining Vehicle Guidance in Structured Environments}
+
+\author[First]{Julio Martinez-Ramirez} 
+%\author[Second]{TBD} 
+%\author[Third]{TBD}
+
+\address[First]{CAT, Mossville, IL 80305 USA (e-mail: julio.martinez1@cat.com).}
+%\address[Second]{TBD}
+%\address[Third]{TBD}
+
+\begin{abstract}
+
+Autonomous mining adoption has not progressed at the same rate as in the conventional automotive industry due to the challenging operating conditions and constraints present in mining environments. These include limited perception caused by dust, mud, and harsh environmental conditions, as well as complex dynamic behavior of heavy-duty vehicles operating under large payloads.
+To enable wider deployment of intelligent mining systems, motion control algorithms must be tailored to the specific characteristics of these environments. In structured, low-speed scenarios such as mining haul roads, lightweight control strategies may offer a viable alternative to computationally intensive approaches.
+This paper investigates the use of differential flatness and geometric control for lateral vehicle guidance and compares their performance against a widely used Model Predictive Control (MPC) baseline. The evaluation focuses on trajectory tracking performance, including RMS lateral error, maximum deviation, and heading error, as well as control effort metrics such as steering smoothness and steering rate.
+Validation is conducted using a mining-relevant high-fidelity simulation environment based on CARLA 0.10.0, incorporating a heavy-duty vehicle model and realistic terrain conditions. Results highlight the operating regimes in which lightweight control strategies can achieve comparable tracking performance to MPC while significantly reducing computational cost and implementation complexity.
+
+\end{abstract}
+
+\begin{keyword}
+Autonomous mining, lateral control, differential flatness, geometric control, model predictive control (MPC), trajectory tracking, heavy-duty vehicles, CARLA simulation.
+\end{keyword}
+
+\end{frontmatter}
+%=======================
+%===============================================================================
+
+\section{Introduction}
+TBD
+
+\appendix
+\section{A summary of Latin grammar}    % Each appendix must have a short title.
+\section{Some Latin vocabulary}              % Sections and subsections are supported  
+                                                                         % in the appendices.
+\end{document}
