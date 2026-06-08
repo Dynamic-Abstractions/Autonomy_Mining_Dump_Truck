@@ -1,33 +1,23 @@
-%===============================================================================
-% ifacconf.tex 2025-07-31 jpuente  
-% Template for IFAC meeting papers
-% Copyright (c) 2025 International Federation of Automatic Control
-%===============================================================================
 \documentclass{ifacconf}
 
 \usepackage{graphicx}
 \usepackage{natbib}
-%===============================================================================
+\usepackage{url}
+
 \begin{document}
 \begin{frontmatter}
 
 \title{Is MPC Necessary? A Comparative Study of Flatness Control for Lateral Mining Vehicle Guidance in Structured Environments}
 
-\author[First]{Julio Martinez-Ramirez} 
-%\author[Second]{TBD} 
-%\author[Third]{TBD}
+\author{Julio Martinez-Ramirez}
 
-\address[First]{CAT, Mossville, IL 80305 USA (e-mail: julio.martinez1@cat.com).}
-%\address[Second]{TBD}
-%\address[Third]{TBD}
+\address{CAT, Mossville, IL 80305 USA (e-mail: julio.martinez1@cat.com).}
 
 \begin{abstract}
-
 Autonomous mining adoption has not progressed at the same rate as in the conventional automotive industry due to the challenging operating conditions and constraints present in mining environments. These include limited perception caused by dust, mud, and harsh environmental conditions, as well as complex dynamic behavior of heavy-duty vehicles operating under large payloads.
 To enable wider deployment of intelligent mining systems, motion control algorithms must be tailored to the specific characteristics of these environments. In structured, low-speed scenarios such as mining haul roads, lightweight control strategies may offer a viable alternative to computationally intensive approaches.
 This paper investigates the use of differential flatness and geometric control for lateral vehicle guidance and compares their performance against a widely used Model Predictive Control (MPC) baseline. The evaluation focuses on trajectory tracking performance, including RMS lateral error, maximum deviation, and heading error, as well as control effort metrics such as steering smoothness and steering rate.
 Validation is conducted using a mining-relevant high-fidelity simulation environment based on CARLA 0.10.0, incorporating a heavy-duty vehicle model and realistic terrain conditions. Results highlight the operating regimes in which lightweight control strategies can achieve comparable tracking performance to MPC while significantly reducing computational cost and implementation complexity.
-
 \end{abstract}
 
 \begin{keyword}
@@ -35,14 +25,109 @@ Autonomous mining, lateral control, differential flatness, geometric control, mo
 \end{keyword}
 
 \end{frontmatter}
-%=======================
-%===============================================================================
 
 \section{Introduction}
-TBD
 
-\appendix
-\section{A summary of Latin grammar}    % Each appendix must have a short title.
-\section{Some Latin vocabulary}              % Sections and subsections are supported  
-                                                                         % in the appendices.
+Latin America plays a critical role in the global mining industry due to its vast reserves of strategic minerals such as copper, lithium, iron ore, and silver. The region accounts for a significant share of global production, including approximately 41\% of copper, 30\% of lithium, and nearly 50\% of silver output, positioning it as a key supplier for global industrial and energy transitions \citep{ref1}. Mining activities represent a major economic driver in several countries across the region. For instance, in Chile, the mining sector contributes between 12\% and 14\% of national GDP and accounts for more than half of total exports, while in Peru it contributes over 8\% of GDP \citep{ref2,ref3}. Additionally, the sector plays a crucial role in employment generation, providing hundreds of thousands of direct jobs and supporting a broader ecosystem of indirect employment through services, logistics, and infrastructure development \citep{ref4}.
+
+Beyond its economic significance, the mining sector is undergoing a rapid technological transformation driven by automation, digitalization, and the integration of advanced analytics and artificial intelligence. Recent reports indicate that approximately 31\% of mining companies in Latin America are actively adopting AI-driven solutions to improve efficiency, safety, and operational performance \citep{ref5}. These advancements are enabling the development of smart mining systems, where data-driven decision-making and automation play a central role in optimizing production and reducing operational risks \citep{ref6}. Despite these advancements, the adoption of autonomous systems in mining remains slower than in the conventional automotive sector due to challenging environmental conditions, including reduced visibility caused by dust and mud, as well as the complex dynamics of heavy-duty vehicles operating under extreme loads. These constraints highlight the need for robust and efficient motion control strategies specifically tailored to mining environments.
+
+Autonomous mining systems have gained increasing attention in recent decades due to the need for improving safety, operational efficiency, and productivity in hazardous environments. Mining environments are inherently challenging, characterized by confined spaces, poor visibility conditions, uneven terrain, and the presence of heavy-duty vehicles operating under extreme payloads. These factors make manual operation both risky and inefficient, motivating the adoption of intelligent and unmanned mining technologies \cite{ref1}. In particular, autonomous haulage systems and unmanned equipment have been successfully deployed in both surface and underground mines, where centralized control, wireless communication, and real-time monitoring enable continuous operation with reduced human intervention \cite{refIntelligentMining}.
+
+From a technological perspective, autonomous mining vehicles rely on a hierarchical architecture that integrates perception, motion planning, and trajectory tracking control \cite{refChen2023}. Among these components, trajectory tracking—especially lateral control—plays a critical role in ensuring that heavy-duty vehicles follow predefined paths accurately and safely. However, the characteristics of mining vehicles differ significantly from conventional passenger vehicles. Mining dump trucks are typically large-scale systems with masses exceeding hundreds of tonnes, subject to variable payloads, actuator delays, and uncertain dynamics, which complicates both modeling and control design \cite{refChen2023}.
+
+Several control strategies have been proposed for autonomous vehicle path tracking, including geometric methods such as pure pursuit and Stanley control, as well as model-based approaches like Model Predictive Control (MPC). While MPC has demonstrated superior performance compared to classical methods in many scenarios, particularly due to its ability to handle constraints and optimize future control actions, it also introduces significant computational complexity \cite{refIFACDumpTruck}. This trade-off becomes particularly relevant in mining applications, where real-time implementation and system robustness are critical.
+
+In addition to control, path planning plays a fundamental role in mining vehicle operation. Smooth and obstacle-avoiding trajectories are essential to ensure safe navigation and efficient operation. Previous studies have shown that the use of curvature-optimized B-spline paths can significantly improve traversal speed and reduce mechanical stress on articulated mining vehicles, highlighting the importance of path geometry in overall system performance \cite{refBSpline}. Furthermore, smoother trajectories reduce steering effort and enable higher operational speeds without compromising safety, which is particularly important for heavy articulated vehicles in constrained environments.
+
+Despite these advancements, the majority of existing research has focused either on high-performance control methods such as MPC or on improvements in planning and perception. Comparatively fewer studies have explored lightweight control strategies tailored to the specific conditions of mining environments, particularly those characterized by low-speed, structured trajectories such as haul roads. This gap motivates the exploration of alternative control approaches that can achieve comparable tracking performance with reduced computational requirements and implementation complexity.
+
+\section{Lateral Dynamic Model of a Mining Dump Truck}
+
+While the kinematic bicycle model is commonly used in the automotive domain for passenger vehicles, its assumptions are no longer sufficient for heavy-duty mining vehicles. Due to the significantly increased forces associated with large payloads, a dynamic bicycle model is required to accurately capture vehicle behavior. In particular, effects such as tire side-slip, oversteering, and friction forces become dominant and must be explicitly considered.
+
+Dynamic models provide a more accurate representation of the forces acting on the vehicle, especially tire forces, which play a critical role in lateral stability and trajectory tracking. Although a full four-wheel dynamic model can capture these effects with high fidelity, it results in a highly nonlinear and complex system that is difficult to use for control design \cite{refFullVehicleModel}.
+
+Since full vehicle models are typically used for validation and high-fidelity simulation purposes, their complexity makes them less suitable for real-time controller development. As a result, simplified dynamic models—such as the two-wheel (bicycle) dynamic model—are commonly adopted in control applications \cite{refVehicleControlReview}. These models provide a balance between accuracy and computational efficiency.
+
+The dynamic bicycle model considers planar motion of the vehicle, including longitudinal motion along the $x$-axis and lateral motion along the $y$-axis. Considering the bicycle model illustrated in Fig.~1, and applying Newton’s laws of motion, the vehicle dynamics can be described by the following equations:
+
+
+\section{Control implementation}
+NOTE: In the proposed plant model, the equivalent front and rear cornering stiffness parameters, $C_f$ and $C_r$, are treated as time-varying inputs rather than fixed constants. This choice is motivated by the strong dependence of tire lateral behavior on terrain conditions, vertical load, and operating state in heavy-duty mining vehicles. In the simulation framework, $C_f$ and $C_r$ are computed externally from the tire-terrain interaction model available in CARLA and then fed into the reduced-order dynamic bicycle model used for control-oriented simulation.
+
+\begin{thebibliography}{xx}
+
+\bibitem[Lee et~al.(2008)]{refFullVehicleModel}
+J.~Lee, J.~Lee, and S.-J. Heo.
+\newblock ``Full vehicle dynamic modeling for chassis control.''
+\newblock In \emph{FISITA World Automotive Congress}, 2008.
+
+\bibitem[Kebbati et~al.(2023)]{refVehicleControlReview}
+Y.~Kebbati, N.~Ait-Oufroukh, D.~Ichalal, and V.~Vigneron.
+\newblock ``Lateral control for autonomous wheeled vehicles: a technical review.''
+\newblock \emph{Asian Journal of Control}, vol.~25, no.~4, pp.~2539--2563, 2023.
+
+\bibitem[Berglund et~al.(2010)]{refBSpline}
+T.~Berglund, A.~Brodnik, H.~Jonsson, M.~Staffanson, and I.~S\"oderkvist.
+\newblock ``Planning smooth and obstacle-avoiding B-spline paths for autonomous mining vehicles.''
+\newblock \emph{IEEE Transactions on Automation Science and Engineering}, vol.~7, no.~1, pp.~167--172, 2010.
+
+\bibitem[Li and Zhan(2018)]{refIntelligentMining}
+J.~Li and K.~Zhan.
+\newblock ``Intelligent mining technology for an underground metal mine based on unmanned equipment.''
+\newblock \emph{Engineering}, vol.~4, pp.~381--391, 2018.
+
+\bibitem[Chen et~al.(2023)]{refChen2023}
+L.~Chen, Z.~Qin, M.~Hu, H.~Gao, et al.
+\newblock ``Trajectory tracking control of autonomous heavy-duty mining dump trucks with uncertain dynamic characteristics.''
+\newblock \emph{Science China Information Sciences}, vol.~66, 2023.
+
+\bibitem[Lalezar et~al.(2024)]{refIFACDumpTruck}
+M.~Lalezar, I.~Izadi, S.~H. Hoseinie, and H.~Mohamadrezaie.
+\newblock ``A model predictive control algorithm for autonomous mining dump trucks.''
+\newblock \emph{IFAC PapersOnLine}, vol.~58, no.~22, pp.~60--65, 2024.
+
+\bibitem[GlobalData(2026)]{ref1}
+GlobalData.
+\newblock \emph{Latin America Mining Review 2026}.
+\newblock GlobalData, Apr. 2026.
+\newblock [Online]. Available: \url{https://www.globaldata.com/store/report/latin-america-mining-analysis/}
+
+\bibitem[International Trade Administration(2025)]{ref2}
+International Trade Administration.
+\newblock \emph{Chile -- Mining}.
+\newblock U.S. Department of Commerce, Nov. 24, 2025.
+\newblock [Online]. Available: \url{https://www.trade.gov/country-commercial-guides/chile-mining}
+
+\bibitem[Hernandez and Perez(2024)]{ref3}
+C.~Hernandez and A.~Perez.
+\newblock \emph{The State of Mining in Latin America}.
+\newblock FCAP Advisors, Jun. 11, 2024.
+\newblock [Online]. Available: \url{https://www.fcapadvisors.com/post/the-state-of-mining-in-latin-america}
+
+\bibitem[Statista(2025)]{ref4}
+Statista.
+\newblock \emph{Mining in Chile -- Statistics \& Facts}.
+\newblock Dec. 17, 2025.
+\newblock [Online]. Available: \url{https://www.statista.com/topics/6550/mining-in-chile/}
+
+\bibitem[Bujakiewicz(2025)]{ref5}
+B.~Bujakiewicz.
+\newblock ``El 31\% de las empresas mineras de Latinoam\'erica apuesta a la IA para optimizar operaciones.''
+\newblock \emph{Infobae}, Sep. 25, 2025.
+\newblock [Online]. Available: \url{https://www.infobae.com/america/ciencia-america/2025/09/25/el-31-de-las-empresas-mineras-de-latinoamerica-apuesta-a-la-ia-para-optimizar-operaciones/}
+
+\bibitem[Digital Market Latin America(2024)]{ref6}
+Digital Market Latin America.
+\newblock ``La miner\'ia inteligente impulsa la transformaci\'on tecnol\'ogica en Am\'erica Latina.''
+\newblock Sep. 4, 2024.
+\newblock [Online]. Available: \url{https://digitalmarketla.com/web/2024/09/04/la-mineria-inteligente-impulsa-la-transformacion-tecnologica-en-america-latina/}
+
+\end{thebibliography}
+
+%\appendix
+%\section{A summary of Latin grammar}
+%\section{Some Latin vocabulary}
+
 \end{document}
