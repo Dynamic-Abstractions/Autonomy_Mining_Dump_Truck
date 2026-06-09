@@ -3,6 +3,11 @@
 \usepackage{graphicx}
 \usepackage{natbib}
 \usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,calc,angles,quotes}
 
 \begin{document}
 \begin{frontmatter}
@@ -52,11 +57,191 @@ Dynamic models provide a more accurate representation of the forces acting on th
 
 Since full vehicle models are typically used for validation and high-fidelity simulation purposes, their complexity makes them less suitable for real-time controller development. As a result, simplified dynamic models—such as the two-wheel (bicycle) dynamic model—are commonly adopted in control applications \cite{refVehicleControlReview}. These models provide a balance between accuracy and computational efficiency.
 
-The dynamic bicycle model considers planar motion of the vehicle, including longitudinal motion along the $x$-axis and lateral motion along the $y$-axis. Considering the bicycle model illustrated in Fig.~1, and applying Newton’s laws of motion, the vehicle dynamics can be described by the following equations:
+The dynamic bicycle model considers planar motion of the vehicle, including longitudinal motion along the $x$-axis and lateral motion along the $y$-axis. Considering the bicycle model illustrated in Fig.~\ref{fig:bicycle_model_dump_truck}, and applying Newton’s laws of motion, the vehicle dynamics can be described by the following equations:
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    line cap=round,
+    line join=round,
+    font=\small
+]
+
+% Parameters
+\def\psi{28}
+\def\delta{18}
+\def\lr{3.2}
+\def\lf{3.8}
+
+% Main coordinates
+\coordinate (R) at (0,0);
+\coordinate (C) at ($(R)+({\psi}:\lr)$);
+\coordinate (F) at ($(C)+({\psi}:\lf)$);
+
+% Auxiliary points for steering angle
+\coordinate (Fbody)  at ($(F)+({\psi}:1.6)$);
+\coordinate (Fsteer) at ($(F)+({\psi+\delta}:1.6)$);
+
+% Vehicle body centerline
+\draw[very thick] (R) -- (F);
+
+% Axle markers
+\draw[thick] ($(R)+({\psi+90}:0.35)$) -- ($(R)+({\psi-90}:0.35)$);
+\draw[thick] ($(F)+({\psi+90}:0.35)$) -- ($(F)+({\psi-90}:0.35)$);
+
+% Wheels
+\begin{scope}[shift={(R)}, rotate=\psi]
+    \fill[gray!45, rounded corners=1pt] (-1.0,-0.18) rectangle (1.0,0.18);
+\end{scope}
+
+\begin{scope}[shift={(F)}, rotate={\psi+\delta}]
+    \fill[gray!45, rounded corners=1pt] (-1.0,-0.18) rectangle (1.0,0.18);
+\end{scope}
+
+% Distance indicators
+\draw[dashed] ($(R)+({\psi+90}:1.05)$) -- (R);
+\draw[dashed] ($(C)+({\psi+90}:1.05)$) -- (C);
+\draw[dashed] ($(F)+({\psi+90}:1.05)$) -- (F);
+
+\draw[<->] ($(R)+({\psi+90}:1.05)$) -- node[above,sloped] {$l_r$} ($(C)+({\psi+90}:1.05)$);
+\draw[<->] ($(C)+({\psi+90}:1.05)$) -- node[above,sloped] {$l_f$} ($(F)+({\psi+90}:1.05)$);
+
+% Center of gravity
+\fill (C) circle (1.3pt);
+
+% States at CG
+\draw[->,thick] (C) -- node[below,sloped] {$\dot{x}$} ($(C)+({\psi}:1.5)$);
+\draw[->,thick] (C) -- node[left] {$\dot{y}$} ($(C)+({\psi+90}:1.2)$);
+\draw[->,thick] (C) -- node[above right] {$v$} ($(C)+(55:1.1)$);
+
+% Global reference dashed line for psi
+\draw[dashed] (C) -- ++(2.2,0);
+
+% Heading angle psi
+\draw[->] ($(C)+(1.0,0)$) arc[start angle=0,end angle=\psi,radius=1.0];
+\node at ($(C)+(0.65,0.35)$) {$\psi$};
+
+% Yaw rate
+\draw[->] ($(C)+(0.10,-0.78)$) arc[start angle=-85,end angle=-15,radius=0.78];
+\node at ($(C)+(0.58,-0.72)$) {$\dot{\psi}$};
+
+% Rear tire forces
+\draw[->,thick] (R) -- node[below,sloped] {$F_{xr}$} ($(R)+({\psi}:1.7)$);
+\draw[->,thick] (R) -- node[left] {$F_{yr}$} ($(R)+({\psi+90}:1.5)$);
+
+% Front tire forces
+\draw[->,thick] (F) -- node[below,sloped] {$F_{xf}$} ($(F)+({\psi+\delta}:1.7)$);
+\draw[->,thick] (F) -- node[left] {$F_{yf}$} ($(F)+({\psi+\delta+90}:1.5)$);
+
+% Steering angle
+\pic[
+    draw,
+    ->,
+    "$\delta_f$",
+    angle eccentricity=1.35,
+    angle radius=10mm
+] {angle = Fbody--F--Fsteer};
+
+% Global axes
+\coordinate (O) at (10.0,0.4);
+\draw[->,thick] (O) -- ++(1.6,0) node[right] {$X$};
+\draw[->,thick] (O) -- ++(0,1.6) node[above] {$Y$};
+
+\end{tikzpicture}
+\caption{Bicycle model representation for a mining dump truck.}
+\label{fig:bicycle_model_dump_truck}
+\end{figure}
 
 
-\section{Control implementation}
-NOTE: In the proposed plant model, the equivalent front and rear cornering stiffness parameters, $C_f$ and $C_r$, are treated as time-varying inputs rather than fixed constants. This choice is motivated by the strong dependence of tire lateral behavior on terrain conditions, vertical load, and operating state in heavy-duty mining vehicles. In the simulation framework, $C_f$ and $C_r$ are computed externally from the tire-terrain interaction model available in CARLA and then fed into the reduced-order dynamic bicycle model used for control-oriented simulation.
+
+\begin{equation}
+\ddot{y}
+=
+\left(
+\frac{C_r l_r - C_f l_f}{m \dot{x}}
+-
+\dot{x}
+\right)\dot{\psi}
+-
+\left(
+\frac{C_f + C_r}{m \dot{x}}
+\right)\dot{y}
++
+\frac{C_f}{m}\,\delta_f
+\end{equation}
+
+\begin{equation}
+\ddot{\psi}
+=
+-
+\left(
+\frac{C_f l_f^2 + C_r l_r^2}{I_z \dot{x}}
+\right)\dot{\psi}
++
+\left(
+\frac{C_r l_r - C_f l_f}{I_z \dot{x}}
+\right)\dot{y}
++
+\frac{C_f l_f}{I_z}\,\delta_f
+\end{equation}
+
+\begin{equation}
+\dot{Y}
+=
+\dot{x} \sin\psi + \dot{y}\cos\psi
+\approx
+\dot{x}\psi + \dot{y}
+\end{equation}
+
+The lateral tire forces are modeled using a linear tire model, where the lateral force is proportional to the slip angle:
+\begin{equation}
+F_{yf} = C_f \alpha_f, \qquad F_{yr} = C_r \alpha_r
+\end{equation}
+
+Under the small-angle assumption, the slip angles can be approximated as:
+\begin{equation}
+\alpha_f \approx \delta_f - \frac{\dot{y} + l_f \dot{\psi}}{\dot{x}},
+\qquad
+\alpha_r \approx -\,\frac{\dot{y} - l_r \dot{\psi}}{\dot{x}}
+\end{equation}
+
+The lateral dynamic model is described by a set of states associated with the planar motion of the vehicle. In particular, the system states are the lateral velocity $\dot{y}$, the yaw rate $\dot{\psi}$, the yaw angle $\psi$, and the global lateral displacement $Y$. The longitudinal velocity $\dot{x}$ is treated as a measurable scheduling variable and is assumed to remain constant or slowly varying over the prediction horizon. The steering angle at the front axle, $\delta_f$, is considered the control input. The physical parameters of the model are given by the vehicle mass $m$, the yaw moment of inertia $I_z$, the distances $l_f$ and $l_r$ from the center of gravity to the front and rear axles, and the tire cornering stiffness coefficients $C_f$ and $C_r$. The lateral tire forces at the front and rear axles are denoted by $F_{yf}$ and $F_{yr}$, respectively, while $F_{xf}$ and $F_{xr}$ represent the longitudinal tire forces. The tire slip angles, $\alpha_f$ and $\alpha_r$, are introduced to model the lateral tire behavior through a linear tire approximation valid under small slip-angle conditions.
+
+\begin{table}[htbp]
+\centering
+\caption{Definition of variables and parameters used in the lateral dynamic model.}
+\label{tab:model_variables}
+\begin{tabular}{ll}
+\hline
+Symbol & Definition \\
+\hline
+$\dot{x}$      & Longitudinal velocity of the vehicle \\
+$\dot{y}$      & Lateral velocity at the center of gravity (CG) \\
+$\ddot{y}$     & Lateral acceleration \\
+$\psi$         & Yaw angle (vehicle heading angle) \\
+$\dot{\psi}$   & Yaw rate \\
+$\ddot{\psi}$  & Yaw acceleration \\
+$Y$            & Global lateral position \\
+$\dot{Y}$      & Global lateral velocity \\
+$\delta_f$     & Front steering angle (control input) \\
+$m$            & Total vehicle mass \\
+$I_z$          & Yaw moment of inertia about the vertical axis \\
+$l_f$          & Distance from the CG to the front axle \\
+$l_r$          & Distance from the CG to the rear axle \\
+$C_f$          & Front tire cornering stiffness \\
+$C_r$          & Rear tire cornering stiffness \\
+$F_{yf}$       & Front lateral tire force \\
+$F_{yr}$       & Rear lateral tire force \\
+$F_{xf}$       & Front longitudinal tire force \\
+$F_{xr}$       & Rear longitudinal tire force \\
+$\alpha_f$     & Front tire slip angle \\
+$\alpha_r$     & Rear tire slip angle \\
+$v$            & Resultant vehicle speed at the CG \\
+\hline
+\end{tabular}
+\end{table}
+
 
 \begin{thebibliography}{xx}
 
