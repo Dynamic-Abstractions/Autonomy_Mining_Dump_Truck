@@ -1,3 +1,4 @@
+\RequirePackage[hyphens]{url}
 \documentclass{ifacconf}
 
 \usepackage{graphicx}
@@ -7,6 +8,8 @@
 \usepackage{amssymb}
 \usepackage{tikz}
 \usepackage{amsmath}
+\usepackage[hyphens]{url}
+\def\UrlBreaks{\do\/\do-\do_\do.}
 \usetikzlibrary{arrows.meta,calc,angles,quotes}
 
 \begin{document}
@@ -15,7 +18,7 @@
 \title{Is MPC Necessary? A Flatness Control for Lateral Mining Vehicle Guidance in Structured Environments}
 
 \author[First]{Julio Martinez-Ramirez}
-\author[Second]{Aqui van ustedes}
+\author[Second]{Yahir Fernando García-García}
 
 \address[First]{Caterpillar Inc.}
 \address[Second]{Universidad Tecnologica de la Mixteca}
@@ -684,6 +687,70 @@ The proposed controller combines three key components:
 
 This structure enables accurate trajectory tracking with reduced computational complexity compared to optimization-based controllers such as MPC.
 
+
+\subsection{Active Disturbance Rejection Control}
+\label{sec:adrc}
+
+Mining vehicles operate under highly variable conditions: load changes, uneven terrain, and uncertainty in tire-soil friction. ADRC addresses this by treating all unknown dynamics as a \emph{total disturbance}, estimated and canceled in real time via an Extended State Observer (ESO), without requiring an accurate system model.
+
+\subsubsection{Extended State Observer} 
+
+The ESO estimates the global lateral position, its derivative, and the total disturbance:
+%
+\begin{equation}
+z_1 = \hat{Y},\quad z_2 = \dot{\hat{Y}},\quad z_3 = \hat{f}
+\label{eq:eso_states}
+\end{equation}
+
+The discrete-time observer equations are:
+%
+\begin{equation}
+    e = Y_m - z_1 
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \dot{z}_1 &= z_2 + \beta_1 e \\
+        \dot{z}_2 &= z_3 + \beta_2 e + b_0\delta_f\\
+        \dot{z}_3 &= \beta_3 e 
+    \end{aligned}
+\end{equation}
+
+
+%
+where each state is integrated with sampling period $T_s$:
+%
+\begin{equation}
+z_i(t + T_s) = z_i(t) + T_s\,\dot{z}_i
+\label{eq:eso_integration}
+\end{equation}
+
+The observer gains are obtained via bandwidth parameterization:
+%
+\begin{equation}
+\beta_1 = 3\omega_o,\quad \beta_2 = 3\omega_o^2,\quad \beta_3 = \omega_o^3
+\label{eq:eso_gains}
+\end{equation}
+
+\subsection{Control Law}
+
+The control signal is computed as:
+%
+\begin{equation}
+u_0 = k_p(Y_d - z_1) + k_d(0 - z_2)
+\label{eq:adrc_u0}
+\end{equation}
+%
+\begin{equation}
+    \boxed{
+\delta_f = \frac{u_0 - z_3}{b_0}
+    }
+\label{eq:adrc_control}
+\end{equation}
+%
+with $b_0 = C_f/m$, $k_p = \omega_c^2$, $k_d = 2\omega_c$, and $\omega_c \leq \omega_o/2$.
+
+
 \section{Simulation Results}
 
 The performance of the proposed flatness-based controller is evaluated using a lane-change maneuver with a target lateral displacement of $y_f = 3.5$ m.
@@ -717,6 +784,15 @@ These results indicate that flatness-based control, combined with feedback linea
 \includegraphics[width=1\linewidth]{lane_change_tracking.png}
 \caption{Lateral displacement tracking performance for the lane-change maneuver. The proposed controller achieves accurate tracking with zero steady-state error.}
 \label{fig:lane_change_tracking}
+\end{figure}
+
+The simulation results show that the ADRC controller achieves accurate trajectory tracking without requiring an exact dynamic model. The Extended State Observer estimates and compensates for the total disturbance, which encompasses model uncertainties, terrain irregularities, and payload variations. A slight response delay is observed due to the observer convergence time, an inherent characteristic of the ESO that can be mitigated by increasing the observer bandwidth $\omega_o$ at the expense of higher noise sensitivity. Despite this limitation, the controller maintains stability and achieves zero steady-state error, offering a robust and computationally lightweight alternative to optimization-based methods.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\linewidth]{ADRC.png}
+\caption{Lateral displacement tracking performance for the lane-change maneuver using the ADRC-based controller. The ADRC achieves accurate tracking with zero steady-state error despite model uncertainties and external disturbances.}
+\label{fig:ADRC}
 \end{figure}
 
 \begin{thebibliography}{xx}
@@ -813,7 +889,7 @@ m &= 623{,}690 \ \text{kg}
 \end{align}
 
 Substituting into the equations:
-
+s
 \begin{align}
 l_f &= 7.195 \times (1 - 0.333) = 4.80 \ \text{m} \\
 l_r &= 7.195 \times (1 - 0.667) = 2.40 \ \text{m} \\
