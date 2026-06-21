@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1782066598.04494 "c:/Users/USER/OneDrive/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" "draft_differential geometry_autonomous_dump_truck.pdf" "draft_differential geometry_autonomous_dump_truck" 1782066599.63293 0
-  "c:/Users/USER/OneDrive/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" 1782066595 36502 3a993e98cc1220f80571ed232f554908 ""
+["pdflatex"] 1782068393.04828 "c:/Users/USER/OneDrive/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" "draft_differential geometry_autonomous_dump_truck.pdf" "draft_differential geometry_autonomous_dump_truck" 1782068394.47944 0
+  "c:/Users/USER/OneDrive/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" 1782066920 36500 b6715b894d2af3edc2f96e88455de08e ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1760255725 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1760252365 916 f87d7c45f9c908e672703b83b72241a3 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1760252365 924 9904cf1d39e9767e7a3622f2a125a565 ""
@@ -140,10 +140,10 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1760262629 5574153 af86687748baf417d9e7d549313527be ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1760262853 3629010 bf8785fd57b61764226904ad062d7b0c ""
   "c:/texlive/2025/texmf.cnf" 1760262604 713 e69b156964470283e0530f5060668171 ""
-  "draft_differential geometry_autonomous_dump_truck.aux" 1782066599 4092 505827975e6fca3ac25ea42b6aeec03a "pdflatex"
-  "draft_differential geometry_autonomous_dump_truck.tex" 1782066595 36502 3a993e98cc1220f80571ed232f554908 ""
+  "draft_differential geometry_autonomous_dump_truck.aux" 1782068394 4092 12f88422443846bdb73723e282f01be3 "pdflatex"
+  "draft_differential geometry_autonomous_dump_truck.tex" 1782066920 36500 b6715b894d2af3edc2f96e88455de08e ""
   "ifacconf.cls" 1781129673 67308 8eace75e0305628a2c07c0f2a28ee3cd ""
-  "lane_change_tracking.png" 1782066118 95263 f4015f33c1b266929ec67abd37973007 ""
+  "lane_change_tracking.png" 1782068391 119371 f02274d574238d924524b8dd7a3d3516 ""
   (generated)
   "draft_differential geometry_autonomous_dump_truck.aux"
   "draft_differential geometry_autonomous_dump_truck.log"

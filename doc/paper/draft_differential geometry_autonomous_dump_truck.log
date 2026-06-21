@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.12)  21 JUN 2026 12:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.12)  21 JUN 2026 12:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -491,12 +491,14 @@ Overfull \hbox (12.97147pt too wide) in paragraph at lines 685--686
 
 
 
-<lane_change_tracking.png, id=28, 1350.4854pt x 730.8906pt>
+<lane_change_tracking.png, id=28, 1350.9672pt x 735.2268pt>
 File: lane_change_tracking.png Graphic file (type png)
 <use lane_change_tracking.png>
 Package pdftex.def Info: lane_change_tracking.png  used on input line 717.
-(pdftex.def)             Requested size: 226.62465pt x 122.6438pt.
+(pdftex.def)             Requested size: 251.80688pt x 137.03572pt.
 
+
+[4 <./lane_change_tracking.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 755--759
 \OT1/cmr/m/n/10 Glob-al-Data, Apr. 2026.  [On-line]. Avail-able:
  []
@@ -507,8 +509,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 755--759
  []
 
 
-
-[4 <./lane_change_tracking.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 779--783
 []\OT1/cmr/m/n/10 B. Bu-jakiewicz.  ``El 31% de las em-pre-sas
  []
@@ -547,9 +547,7 @@ Overfull \hbox (177.43951pt too wide) in paragraph at lines 785--789
 
 
 
-[5
-
-] (./draft_differential geometry_autonomous_dump_truck.aux)
+[5] (./draft_differential geometry_autonomous_dump_truck.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -564,7 +562,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,13n,91p,1270b,1035s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "draft_differential geometry_autonomous_dump_truck.pdf" (5 pages, 305621 bytes).
+Output written on "draft_differential geometry_autonomous_dump_truck.pdf" (5 pages, 329721 bytes).
 PDF statistics:
  94 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream
