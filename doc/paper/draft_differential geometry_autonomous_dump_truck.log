@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.8)  9 JUN 2026 13:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.8)  20 JUN 2026 23:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -632,80 +632,85 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [1{C:/Users/marti343/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (123.57715pt too wide) in paragraph at lines 151--152
+Overfull \hbox (10.16855pt too wide) in paragraph at lines 318--319
  [][] 
  []
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 279--283
+[2] [3]
+Overfull \hbox (12.97147pt too wide) in paragraph at lines 685--686
+\OT1/cmr/m/n/10 re-duced com-pu-ta-tional com-plex-ity com-pared to optimizatio
+n-
+ []
+
+<lane_change_tracking.png, id=27, 394.1124pt x 304.9794pt>
+File: lane_change_tracking.png Graphic file (type png)
+<use lane_change_tracking.png>
+Package pdftex.def Info: lane_change_tracking.png  used on input line 717.
+(pdftex.def)             Requested size: 226.62465pt x 175.3711pt.
+[4 <./lane_change_tracking.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 755--759
 \OT1/cmr/m/n/10 Glob-al-Data, Apr. 2026.  [On-line]. Avail-able:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--283
+Underfull \hbox (badness 10000) in paragraph at lines 755--759
 \OT1/cmtt/m/n/10 https : / / www . globaldata . com / store / report /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--307
+Underfull \hbox (badness 10000) in paragraph at lines 779--783
 []\OT1/cmr/m/n/10 B. Bu-jakiewicz.  ``El 31% de las em-pre-sas
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--307
+Underfull \hbox (badness 10000) in paragraph at lines 779--783
 \OT1/cmr/m/n/10 min-eras de Lati-noam^^Serica apuesta a la IA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--307
+Underfull \hbox (badness 10000) in paragraph at lines 779--783
 \OT1/cmtt/m/n/10 com / america / ciencia-[]america / 2025 / 09 / 25 /
  []
 
 
-Overfull \hbox (237.68901pt too wide) in paragraph at lines 303--307
+Overfull \hbox (237.68901pt too wide) in paragraph at lines 779--783
 \OT1/cmtt/m/n/10 el-[]31-[]de-[]las-[]empresas-[]mineras-[]de-[]latinoamerica-[
 ]apuesta-[]a-[]la-[]ia-[]para-[]optimizar-[]operaciones/$ 
  []
 
 
-Underfull \hbox (badness 5622) in paragraph at lines 309--313
+Underfull \hbox (badness 5622) in paragraph at lines 785--789
 \OT1/cmr/m/n/10 Latina.''  Sep. 4, 2024.  [On-line]. Avail-able:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--313
+Underfull \hbox (badness 10000) in paragraph at lines 785--789
 \OT1/cmtt/m/n/10 https : / / digitalmarketla . com / web / 2024 / 09 / 04 /
  []
 
 
-Overfull \hbox (177.43951pt too wide) in paragraph at lines 309--313
+Overfull \hbox (177.43951pt too wide) in paragraph at lines 785--789
 \OT1/cmtt/m/n/10 la-[]mineria-[]inteligente-[]impulsa-[]la-[]transformacion-[]t
 ecnologica-[]en-[]america-[]latina/$ 
  []
 
-[3] (draft_differential geometry_autonomous_dump_truck.aux)
+[5] (draft_differential geometry_autonomous_dump_truck.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14772 strings out of 467871
- 297481 string characters out of 5416925
- 695070 words of memory out of 5000000
- 43400 multiletter control sequences out of 15000+600000
+ 14797 strings out of 467871
+ 298090 string characters out of 5416925
+ 696490 words of memory out of 5000000
+ 43425 multiletter control sequences out of 15000+600000
  636577 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,104p,1249b,1041s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,104p,1249b,1039s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/marti343/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmbx10.pfb><C:/Users/marti343/AppData/Local/Programs/MiKTeX/fonts/type1/publ
 ic/amsfonts/cm/cmbx12.pfb><C:/Users/marti343/AppData/Local/Programs/MiKTeX/font
@@ -723,10 +728,10 @@ KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marti343/AppData/Local
 pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users
 /marti343/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.p
 fb>
-Output written on "draft_differential geometry_autonomous_dump_truck.pdf" (3 pa
-ges, 204115 bytes).
+Output written on "draft_differential geometry_autonomous_dump_truck.pdf" (5 pa
+ges, 254253 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
+ 92 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
