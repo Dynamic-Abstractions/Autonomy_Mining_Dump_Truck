@@ -221,20 +221,27 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-INPUT .\lane_change_tracking.png
-INPUT .\lane_change_tracking.png
-INPUT .\lane_change_tracking.png
-INPUT .\lane_change_tracking.png
-INPUT .\lane_change_tracking.png
-INPUT .\lane_change_tracking.png
-INPUT .\lane_change_tracking.png
-INPUT .\ADRC.png
-INPUT .\ADRC.png
-INPUT .\ADRC.png
-INPUT .\ADRC.png
-INPUT .\ADRC.png
-INPUT .\ADRC.png
-INPUT .\ADRC.png
+INPUT .\F1.png
+INPUT .\F1.png
+INPUT .\F1.png
+INPUT .\F1.png
+INPUT .\F1.png
+INPUT .\F1.png
+INPUT .\F1.png
+INPUT .\F2.png
+INPUT .\F2.png
+INPUT .\F2.png
+INPUT .\F2.png
+INPUT .\F2.png
+INPUT .\F2.png
+INPUT .\F2.png
+INPUT .\F3.png
+INPUT .\F3.png
+INPUT .\F3.png
+INPUT .\F3.png
+INPUT .\F3.png
+INPUT .\F3.png
+INPUT .\F3.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT draft_differential geometry_autonomous_dump_truck.aux
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb

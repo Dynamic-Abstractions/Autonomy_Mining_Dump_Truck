@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.25)  21 JUN 2026 23:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.25)  21 JUN 2026 23:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -416,7 +416,14 @@ File: tikzlibraryquotes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ) (C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count337
-) (draft_differential geometry_autonomous_dump_truck.aux)
+) (draft_differential geometry_autonomous_dump_truck.aux
+
+LaTeX Warning: Label `fig:lane_change_tracking' multiply defined.
+
+
+LaTeX Warning: Label `fig:lane_change_tracking' multiply defined.
+
+)
 \openout1 = `"draft_differential geometry_autonomous_dump_truck.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -489,53 +496,58 @@ Overfull \hbox (26.3192pt too wide) in paragraph at lines 769--769
  []
 
 [4]
-<lane_change_tracking.png, id=30, 1364.9394pt x 735.2268pt>
-File: lane_change_tracking.png Graphic file (type png)
-<use lane_change_tracking.png>
-Package pdftex.def Info: lane_change_tracking.png  used on input line 840.
-(pdftex.def)             Requested size: 251.80688pt x 135.63339pt.
-<ADRC.png, id=31, 529.4982pt x 461.0826pt>
-File: ADRC.png Graphic file (type png)
-<use ADRC.png>
-Package pdftex.def Info: ADRC.png  used on input line 849.
-(pdftex.def)             Requested size: 251.80688pt x 219.26978pt.
- [5 <./lane_change_tracking.png (PNG copy)> <./ADRC.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 889--893
+<F1.png, id=30, 404.2302pt x 214.8828pt>
+File: F1.png Graphic file (type png)
+<use F1.png>
+Package pdftex.def Info: F1.png  used on input line 846.
+(pdftex.def)             Requested size: 251.80688pt x 133.85876pt.
+<F2.png, id=31, 398.9304pt x 214.8828pt>
+File: F2.png Graphic file (type png)
+<use F2.png>
+Package pdftex.def Info: F2.png  used on input line 853.
+(pdftex.def)             Requested size: 251.80688pt x 135.6359pt.
+<F3.png, id=32, 410.0118pt x 214.8828pt>
+File: F3.png Graphic file (type png)
+<use F3.png>
+Package pdftex.def Info: F3.png  used on input line 860.
+(pdftex.def)             Requested size: 251.80688pt x 131.97015pt.
+ [5 <./F1.png (PNG copy)> <./F2.png (PNG copy)> <./F3.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 899--903
 \OT1/cmtt/m/n/10 / / www . globaldata . com / store / report / latin -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 913--917
+Underfull \hbox (badness 10000) in paragraph at lines 923--927
 \OT1/cmtt/m/n/10 https : / / www . infobae . com / america / ciencia -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 913--917
+Underfull \hbox (badness 10000) in paragraph at lines 923--927
 \OT1/cmtt/m/n/10 america / 2025 / 09 / 25 / el -[] 31 -[] de -[] las -[] empresas -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 913--917
+Underfull \hbox (badness 10000) in paragraph at lines 923--927
 \OT1/cmtt/m/n/10 mineras -[] de -[] latinoamerica -[] apuesta -[] a -[] la -[] ia -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--923
+Underfull \hbox (badness 10000) in paragraph at lines 929--933
 []\OT1/cmr/m/n/10 Digital Mar-ket Latin Amer-ica.  ``La miner^^S^^Pa
  []
 
 
-Underfull \hbox (badness 7415) in paragraph at lines 919--923
+Underfull \hbox (badness 7415) in paragraph at lines 929--933
 \OT1/cmr/m/n/10 in-teligente im-pulsa la trans-for-maci^^Son tec-nol^^Sogica
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--923
+Underfull \hbox (badness 10000) in paragraph at lines 929--933
 \OT1/cmr/m/n/10 Avail-able: $\OT1/cmtt/m/n/10 https : / / digitalmarketla . com / web /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--923
+Underfull \hbox (badness 10000) in paragraph at lines 929--933
 \OT1/cmtt/m/n/10 2024 / 09 / 04 / la -[] mineria -[] inteligente -[] impulsa -[] la -[]
  []
 
@@ -544,19 +556,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 919--923
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 14815 strings out of 467870
- 293086 string characters out of 5428419
- 694576 words of memory out of 5000000
- 43444 multiletter control sequences out of 15000+600000
+ 14821 strings out of 467870
+ 293026 string characters out of 5428419
+ 694593 words of memory out of 5000000
+ 43450 multiletter control sequences out of 15000+600000
  636577 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,13n,104p,1250b,1039s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on "draft_differential geometry_autonomous_dump_truck.pdf" (6 pages, 429282 bytes).
+Output written on "draft_differential geometry_autonomous_dump_truck.pdf" (6 pages, 361671 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
+ 97 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

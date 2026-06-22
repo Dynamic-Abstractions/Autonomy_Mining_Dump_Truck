@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1782105372.21765 "d:/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" "draft_differential geometry_autonomous_dump_truck.pdf" "draft_differential geometry_autonomous_dump_truck" 1782105374.1495 0
-  "ADRC.png" 1782082683 60930 1a967702d8872c5f366ff0efc4b5ed75 ""
+["pdflatex"] 1782107246.17396 "d:/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" "draft_differential geometry_autonomous_dump_truck.pdf" "draft_differential geometry_autonomous_dump_truck" 1782107248.33874 0
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1233951854 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1233951854 928 2dc8d444221b7a635bb58038579b861a ""
@@ -137,11 +136,13 @@
   "C:/Program Files/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Yahoff/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1774460239 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Yahoff/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1774472658 13323464 ab2f780685bba33b951e8f20f009a6d2 ""
-  "d:/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" 1782105368 41451 d0ced07f9902e470c803ad20ba584935 ""
-  "draft_differential geometry_autonomous_dump_truck.aux" 1782105373 5607 0617a6c77eb9ba9ff4a1e2185b71e1b7 "pdflatex"
-  "draft_differential geometry_autonomous_dump_truck.tex" 1782105368 41451 d0ced07f9902e470c803ad20ba584935 ""
+  "F1.png" 1782107082 28980 851f5cb997cdffeb6973d8cf9fddfe4c ""
+  "F2.png" 1782107094 45424 71578b4e0c322cca59445ddf8d40c525 ""
+  "F3.png" 1782107114 52957 98b523a9baefdca93ba84b234e69c794 ""
+  "d:/Documentos/GitHub/Autonomy_Mining_Dump_Truck/doc/paper/draft_differential geometry_autonomous_dump_truck.tex" 1782107241 41286 1fdde8fcc38b7a9dcecf57c13208f82e ""
+  "draft_differential geometry_autonomous_dump_truck.aux" 1782107247 5476 e3b1d55f3ec0c06b202dae5dac2dde99 "pdflatex"
+  "draft_differential geometry_autonomous_dump_truck.tex" 1782107241 41286 1fdde8fcc38b7a9dcecf57c13208f82e ""
   "ifacconf.cls" 1782066445 67308 8eace75e0305628a2c07c0f2a28ee3cd ""
-  "lane_change_tracking.png" 1782075212 134203 28fe2a97fcd491b7951a28368bfc6d3c ""
   (generated)
   "draft_differential geometry_autonomous_dump_truck.aux"
   "draft_differential geometry_autonomous_dump_truck.log"

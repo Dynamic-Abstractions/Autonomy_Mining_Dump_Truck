@@ -835,23 +835,33 @@ The simulation results demonstrate that the proposed flatness-based controller c
 
 These results indicate that flatness-based control, combined with feedback linearization and integral correction, provides an effective and computationally efficient alternative to optimization-based approaches for structured, low-speed mining scenarios.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\linewidth]{lane_change_tracking.png}
-\caption{Lateral displacement tracking performance for the lane-change maneuver. The proposed controller achieves accurate tracking with zero steady-state error.}
-\label{fig:lane_change_tracking}
-\end{figure}
 
 The simulation results show that the ADRC controller achieves accurate trajectory tracking without requiring an exact dynamic model. The Extended State Observer estimates and compensates for the total disturbance, which encompasses model uncertainties, terrain irregularities, and payload variations. A slight response delay is observed due to the observer convergence time, an inherent characteristic of the ESO that can be mitigated by increasing the observer bandwidth $\omega_o$ at the expense of higher noise sensitivity. Despite this limitation, the controller maintains stability and achieves zero steady-state error, offering a robust and computationally lightweight alternative to optimization-based methods.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\linewidth]{ADRC.png}
-\caption{Lateral displacement tracking performance for the lane-change maneuver using the ADRC-based controller. The ADRC achieves accurate tracking with zero steady-state error despite model uncertainties and external disturbances.}
-\label{fig:ADRC}
-\end{figure}
 
 Due to its aggressiveness, sliding mode control can enhance control robustness; however, it also produces undesirable effects. For this reason, a quasi-sliding mode was implemented to mitigate the unwanted chattering effect, which helps to achieve a smooth control input.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\linewidth]{F1.png}
+\caption{Steering Angle (rad)}
+\label{fig:lane_change_tracking}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\linewidth]{F2.png}
+\caption{Lateral Displacement (m)}
+\label{fig:lane_change_tracking}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\linewidth]{F3.png}
+\caption{Heading Angle (rad/sec)}
+\label{fig:lane_change_tracking}
+\end{figure}
+
 
 \begin{thebibliography}{xx}
 
