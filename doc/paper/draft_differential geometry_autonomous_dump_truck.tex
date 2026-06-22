@@ -17,13 +17,13 @@
 
 \title{Is MPC Necessary? A Comparative Study of Lateral Control Strategies for Mining Vehicle Guidance in Structured Environments}
 
-\author[First]{Julio Martinez-Ramirez}
-\author[Second]{Yahir Fernando García-García}
+\author[First]{Yahir Fernando García-García}
+\author[Second]{Julio Martinez-Ramirez}
 \author[Third]{Néstor Hernández-Castellanos}
 \author[Fourth]{Raúl Jiménez-Ramírez}
 
-\address[First]{Caterpillar Inc.}
-\address[Second]{Universidad Tecnologica de la Mixteca (e-mail: yahoff.gg@gmail.com)}
+\address[First]{Universidad Tecnologica de la Mixteca (e-mail: yahoff.gg@gmail.com)}
+\address[Second]{Caterpillar Inc. (e-mail: julio.martinez1@cat.com)}
 \address[Third]{Universidad Tecnologica de la Mixteca (e-mail: nestihc22@hotmail.com)}
 \address[Fourth]{Universidad Tecnologica de la Mixteca (e-mail: rljimenezrz@gmail.com)}
 
@@ -850,6 +850,8 @@ The simulation results show that the ADRC controller achieves accurate trajector
 \caption{Lateral displacement tracking performance for the lane-change maneuver using the ADRC-based controller. The ADRC achieves accurate tracking with zero steady-state error despite model uncertainties and external disturbances.}
 \label{fig:ADRC}
 \end{figure}
+
+Due to its aggressiveness, sliding mode control can enhance control robustness; however, it also produces undesirable effects. For this reason, a quasi-sliding mode was implemented to mitigate the unwanted chattering effect, which helps to achieve a smooth control input.
 
 \begin{thebibliography}{xx}
 
