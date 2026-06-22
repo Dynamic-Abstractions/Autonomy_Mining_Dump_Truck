@@ -753,8 +753,48 @@ u_0 = k_p(Y_d - z_1) + k_d(0 - z_2)
 \end{equation}
 %
 with $b_0 = C_f/m$, $k_p = \omega_c^2$, $k_d = 2\omega_c$, and $\omega_c \leq \omega_o/2$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sliding Mode Control with Quasi-Continuous Approximation}
 
+The lateral dynamics of the vehicle can be expressed in the input--output form as
 
+\begin{equation}
+\ddot{y}=f(x)+g(x)\delta_f
+\end{equation}
+
+where $f(x)$ and $g(x)$ represent nonlinear functions of the system states, and $\delta_f$ denotes the steering input. The control objective is to ensure convergence of the lateral position $y$ to the desired trajectory $y_d$.
+
+\subsubsection{Error Definition}
+
+The lateral tracking error is defined as
+
+\begin{equation}
+e_y = y-y_d
+\end{equation}
+
+and the sliding surface is selected as
+
+\begin{equation}
+\sigma = \dot{e}_y + \lambda e_y
+\end{equation}
+
+where $\lambda>0$ is a design parameter that determines the convergence rate of the tracking error.
+
+\subsubsection{Control Law}
+
+To reduce chattering while preserving the robustness properties of sliding mode control, a quasi-continuous approximation based on the hyperbolic tangent function is employed. The resulting steering control law is given by
+
+\begin{equation}
+\boxed{
+\begin{aligned}
+\delta_f=\frac{m}{C_f}\Bigg(&-\ddot{x}\psi-\frac{C_r l_r-C_f l_f}{m\dot{x}}\dot{\psi}+\frac{C_f+C_r}{m\dot{x}}\dot{y}\\
+&+\ddot{y}-\lambda_2\dot{e}-\tanh\left(\frac{\sigma}{\nu}\right)\Bigg)
+\end{aligned}
+}
+\end{equation}
+
+where $k>0$ is the switching gain and $\nu>0$ defines the thickness of the boundary layer around the sliding surface.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Simulation Results}
 
 The performance of the proposed flatness-based controller is evaluated using a lane-change maneuver with a target lateral displacement of $y_f = 3.5$ m.
