@@ -1,5 +1,5 @@
 \RequirePackage[hyphens]{url}
-\documentclass{ifacconf}
+\documentclass[letterpaper]{ifacconf}
 
 \usepackage{graphicx}
 \usepackage{natbib}
@@ -15,27 +15,39 @@
 \begin{document}
 \begin{frontmatter}
 
-\title{Is MPC Necessary? A Flatness Control for Lateral Mining Vehicle Guidance in Structured Environments}
+\title{Is MPC Necessary? A Comparative Study of Lateral Control Strategies for Mining Vehicle Guidance in Structured Environments}
 
-\author[First]{Julio Martinez-Ramirez}
-\author[Second]{Yahir Fernando García-García}
-\author[Third]{Néstor Hernández-Castellanos}
-\author[Fourth]{Raúl Jiménez-Ramírez}
+\author[First]{Y.F. García-García}
+\author[Second]{J.C. Martinez-Ramirez}
+\author[Third]{N. Hernández-Castellanos}
+\author[Fourth]{R. Jiménez-Ramírez}
 
-\address[First]{Caterpillar Inc.}
-\address[Second]{Universidad Tecnologica de la Mixteca (e-mail: yahoff.gg@gmail.com)}
+\address[First]{Universidad Tecnologica de la Mixteca (e-mail: yahoff.gg@gmail.com)}
+\address[Second]{Caterpillar Inc. (e-mail: julio.martinez1@cat.com)}
 \address[Third]{Universidad Tecnologica de la Mixteca (e-mail: nestihc22@hotmail.com)}
 \address[Fourth]{Universidad Tecnologica de la Mixteca (e-mail: rljimenezrz@gmail.com)}
 
 \begin{abstract}
-Autonomous mining adoption has not progressed at the same rate as in the conventional automotive industry due to the challenging operating conditions and constraints present in mining environments. These include limited perception caused by dust, mud, and harsh environmental conditions, as well as complex dynamic behavior of heavy-duty vehicles operating under large payloads.
-To enable wider deployment of intelligent mining systems, motion control algorithms must be tailored to the specific characteristics of these environments. In structured, low-speed scenarios such as mining haul roads, lightweight control strategies may offer a viable alternative to computationally intensive approaches.
-This paper investigates the use of differential flatness and geometric control for lateral vehicle guidance and compares their performance against a widely used Model Predictive Control (MPC) baseline. The evaluation focuses on trajectory tracking performance, including RMS lateral error, maximum deviation, and heading error, as well as control effort metrics such as steering smoothness and steering rate.
-Validation is conducted using a mining-relevant high-fidelity simulation environment based on CARLA 0.10.0, incorporating a heavy-duty vehicle model and realistic terrain conditions. Results highlight the operating regimes in which lightweight control strategies can achieve comparable tracking performance to MPC while significantly reducing computational cost and implementation complexity.
+Autonomous mining adoption has not progressed at the same rate as in the
+conventional automotive industry due to the challenging operating conditions and constraints
+present in mining environments. These include limited perception caused by dust, mud, and
+harsh environmental conditions, as well as complex dynamic behavior of heavy-duty vehicles
+operating under large payloads. To enable wider deployment of intelligent mining systems,
+motion control algorithms must be tailored to the specific characteristics of these environments.
+In structured, low-speed scenarios such as mining haul roads, lightweight control strategies may
+offer a viable alternative to computationally intensive approaches. This paper investigates the
+use of differential flatness and geometric control for lateral vehicle guidance and compares their
+performance against a widely used Model Predictive Control (MPC) baseline. The evaluation
+focuses on trajectory tracking performance, including RMS lateral error, maximum deviation,
+and heading error, as well as control effort metrics such as steering smoothness and steering
+rate. 
+Results highlight the operating regimes in which lightweight control strategies can achieve
+comparable tracking performance to MPC while significantly reducing computational cost and
+implementation complexity
 \end{abstract}
 
 \begin{keyword}
-Autonomous mining, lateral control, differential flatness, geometric control, model predictive control (MPC), trajectory tracking, heavy-duty vehicles, CARLA simulation.
+Autonomous mining, lateral control, differential flatness, geometric control, model predictive control (MPC), trajectory tracking, heavy-duty vehicles.
 \end{keyword}
 
 \end{frontmatter}
@@ -823,21 +835,33 @@ The simulation results demonstrate that the proposed flatness-based controller c
 
 These results indicate that flatness-based control, combined with feedback linearization and integral correction, provides an effective and computationally efficient alternative to optimization-based approaches for structured, low-speed mining scenarios.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=1\linewidth]{lane_change_tracking.png}
-\caption{Lateral displacement tracking performance for the lane-change maneuver. The proposed controller achieves accurate tracking with zero steady-state error.}
-\label{fig:lane_change_tracking}
-\end{figure}
 
 The simulation results show that the ADRC controller achieves accurate trajectory tracking without requiring an exact dynamic model. The Extended State Observer estimates and compensates for the total disturbance, which encompasses model uncertainties, terrain irregularities, and payload variations. A slight response delay is observed due to the observer convergence time, an inherent characteristic of the ESO that can be mitigated by increasing the observer bandwidth $\omega_o$ at the expense of higher noise sensitivity. Despite this limitation, the controller maintains stability and achieves zero steady-state error, offering a robust and computationally lightweight alternative to optimization-based methods.
 
+
+Due to its aggressiveness, sliding mode control can enhance control robustness; however, it also produces undesirable effects. For this reason, a quasi-sliding mode was implemented to mitigate the unwanted chattering effect, which helps to achieve a smooth control input.
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=1\linewidth]{ADRC.png}
-\caption{Lateral displacement tracking performance for the lane-change maneuver using the ADRC-based controller. The ADRC achieves accurate tracking with zero steady-state error despite model uncertainties and external disturbances.}
-\label{fig:ADRC}
+\includegraphics[width=1\linewidth]{F1.png}
+\caption{Steering Angle (rad)}
+\label{fig:lane_change_tracking}
 \end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\linewidth]{F2.png}
+\caption{Lateral Displacement (m)}
+\label{fig:lane_change_tracking}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\linewidth]{F3.png}
+\caption{Heading Angle (rad/sec)}
+\label{fig:lane_change_tracking}
+\end{figure}
+
 
 \begin{thebibliography}{xx}
 
