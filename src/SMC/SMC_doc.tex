@@ -1,0 +1,326 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel} 
+\usepackage{graphicx}       
+\usepackage{amsmath}        
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{draftwatermark} 
+\bibliographystyle{ieeetr} 
+
+\usepackage{verbatim}
+
+\SetWatermarkText{EN REVISIÓN}
+\SetWatermarkScale{3}
+\SetWatermarkColor[gray]{0.85}
+
+
+\title{CAT797 lateral dynamics}
+%\author{Jiménez Ramírez}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Sea la dinámica lateral del vehículo descrita por el modelo bicicleta lineal
+
+\begin{equation}
+\ddot{y}
+=
+\left(
+\frac{C_r l_r - C_f l_f}{m \dot{x}}
+-
+\dot{x}
+\right)\dot{\psi}
+-
+\left(
+\frac{C_f + C_r}{m \dot{x}}
+\right)\dot{y}
++
+\frac{C_f}{m}\delta_f
+\label{eq:lateral_dynamics}
+\end{equation}
+
+\begin{equation}
+\ddot{\psi}
+=
+-
+\left(
+\frac{C_f l_f^2 + C_r l_r^2}{I_z \dot{x}}
+\right)\dot{\psi}
++
+\left(
+\frac{C_r l_r - C_f l_f}{I_z \dot{x}}
+\right)\dot{y}
++
+\frac{C_f l_f}{I_z}\delta_f
+\label{eq:yaw_dynamics}
+\end{equation}
+
+\begin{equation}
+\dot{Y}
+=
+\dot{x}\sin\psi+\dot{y}\cos\psi
+\end{equation}
+
+Suponiendo pequeños ángulos de guiñada, es posible aproximar
+
+\begin{equation}
+\dot{Y}
+\approx
+\dot{x}\psi+\dot{y}
+\label{eq:Ydot}
+\end{equation}
+
+Definiendo el vector de estado
+
+\begin{equation}
+\chi=
+\begin{bmatrix}
+\dot{y}\\
+\dot{\psi}\\
+Y\\ \psi
+\end{bmatrix}
+=
+\begin{bmatrix}
+\chi_1\\
+\chi_2\\
+\chi_3\\ \chi_4
+\end{bmatrix}
+\end{equation}
+
+y tomando como salida la posición lateral
+
+\begin{equation}
+y_\chi=
+\begin{bmatrix}
+0 & 0 & 1 & 0
+\end{bmatrix}
+\chi
+=
+\chi_3
+\end{equation}
+
+El error de seguimiento se define como
+
+\begin{equation}
+e=y_\chi-y_{ref}
+\end{equation}
+
+donde $y_{ref}$ representa la trayectoria lateral deseada.
+
+Se selecciona una superficie deslizante de primer orden dada por
+
+\begin{equation}
+\sigma=\dot e+\lambda e
+\label{eq:sliding_surface}
+\end{equation}
+
+donde $\lambda>0$ determina la velocidad de convergencia del error.
+
+Derivando \eqref{eq:sliding_surface}
+
+\begin{equation}
+\dot{\sigma}
+=
+\ddot e+\lambda \dot e
+\label{eq:sigma_dot}
+\end{equation}
+
+Por otra parte,
+
+\begin{equation}
+e=y_\chi-y_{ref}
+\end{equation}
+
+por lo que
+
+\begin{equation}
+\ddot e
+=
+\ddot y_\chi-\ddot y_{ref}
+\label{eq:error_ddot}
+\end{equation}
+
+Dado que
+
+\begin{equation}
+y_\chi=Y
+\end{equation}
+
+de \eqref{eq:Ydot} se obtiene
+
+\begin{equation}
+\dot y_\chi
+=
+\dot{x}\psi+\dot y
+= \dot{x}\chi_4+\chi_1
+\end{equation}
+
+Derivando nuevamente
+
+\begin{equation}
+\ddot y_\chi
+=
+\ddot{x}\psi
++
+\dot{x}\dot{\psi}
++
+\ddot y
+= \ddot{x}\chi_4 + \dot{x}\chi_2 + \dot{\chi}_1
+\label{eq:yddot_aux}
+\end{equation}
+
+Sustituyendo la dinámica lateral \eqref{eq:lateral_dynamics} en \eqref{eq:yddot_aux}
+
+\begin{equation}
+\begin{aligned}
+\ddot y_\chi
+=&
+\ddot{x}\chi_4
++
+\dot{x}\chi_2
++
+\left(
+\frac{C_r l_r-C_f l_f}{m\dot{x}}
+-\dot{x}
+\right)\chi_2
+\\
+&
+-\frac{C_f+C_r}{m\dot{x}}\chi_1
++
+\frac{C_f}{m}\delta_f
+\end{aligned}
+\end{equation}
+
+Agrupando términos
+
+\begin{equation}
+\ddot y_\chi
+=
+\ddot{x}\chi_4
++
+\frac{C_r l_r-C_f l_f}{m\dot{x}}\chi_2
+-
+\frac{C_f+C_r}{m\dot{x}}\chi_1
++
+\frac{C_f}{m}\delta_f
+\label{eq:input_output}
+\end{equation}
+
+Se define una entrada virtual $v$ como
+
+\begin{equation}
+v=\ddot y_\chi
+\end{equation}
+
+por lo que de \eqref{eq:input_output}
+
+\begin{equation}
+v
+=
+\ddot{x}\chi_4
++
+\frac{C_r l_r-C_f l_f}{m\dot{x}}\chi_2
+-
+\frac{C_f+C_r}{m\dot{x}}\chi_1
++
+\frac{C_f}{m}\delta_f
+\end{equation}
+
+Despejando la entrada de control
+
+\begin{equation}
+\delta_f
+=
+\frac{m}{C_f}
+\left(
+v
+-\ddot{x}\chi_4
+-\frac{C_r l_r-C_f l_f}{m\dot{x}}\chi_2
++\frac{C_f+C_r}{m\dot{x}}\chi_1
+\right)
+\label{eq:feedback_linearization}
+\end{equation}
+
+Para reducir el fenómeno de chattering se emplea una capa límite basada en la función hiperbólica tangente
+
+\begin{equation}
+\dot{\sigma}
+=
+-k\tanh\left(\frac{\sigma}{\nu_\chi}\right)
+\label{eq:reaching_law}
+\end{equation}
+
+donde $k>0$ es la ganancia de convergencia y $\nu_\chi>0$ representa el espesor de la capa límite.
+
+Sustituyendo \eqref{eq:error_ddot} en \eqref{eq:sigma_dot}
+
+\begin{equation}
+\dot{\sigma}
+=
+\ddot y_\chi
+-\ddot y_{ref}
++\lambda \dot e
+\end{equation}
+
+y utilizando \eqref{eq:reaching_law}
+
+\begin{equation}
+\ddot y_\chi
+=
+\ddot y_{ref}
+-\lambda\dot e
+-k\tanh\left(\frac{\sigma}{\nu_{sw}}\right)
+\end{equation}
+
+Por lo tanto, la entrada virtual queda definida como
+
+\begin{equation}
+v
+=
+\ddot y_{ref}
+-\lambda\dot e
+-k\tanh\left(\frac{\sigma}{\nu_{sw}}\right)
+\label{eq:v}
+\end{equation}
+
+Sustituyendo \eqref{eq:v} en \eqref{eq:feedback_linearization}, se obtiene la ley de control final en términos de $\chi$
+
+\begin{equation}
+\boxed{
+\delta_f=
+\frac{m}{C_f}
+\left(
+\ddot y_{ref}
+-\lambda\dot e
+-k\tanh\left(\frac{\sigma}{\nu_{sw}}\right)
+-\ddot{x}\chi_4
+-\frac{C_r l_r-C_f l_f}{m\dot{x}}\chi_2
++\frac{C_f+C_r}{m\dot{x}}\chi_1
+\right)
+}
+\label{eq:control_law}
+\end{equation}
+
+en este caso si $\dot{x}=$constante, $\ddot{x}=0 $, la ley de control se simplifica a
+
+\begin{equation}
+\boxed{
+\delta_f=
+\frac{m}{C_f}
+\left(
+\ddot y_{ref}
+-\lambda\dot e
+-k\tanh\left(\frac{\sigma}{\nu_{sw}}\right)
+-\frac{C_r l_r-C_f l_f}{m\dot{x}}\chi_2
++\frac{C_f+C_r}{m\dot{x}}\chi_1
+\right)
+}
+\label{eq:control_law_simplified}
+\end{equation}
+
+\end{document}
