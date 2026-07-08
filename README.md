@@ -269,7 +269,7 @@ $$A(v_x) = -\frac{C_f L_f^2 + C_r L_r^2}{I_z v_x}, \qquad
 The control law implements **feedback linearisation** plus outer-loop state
 feedback:
 
-$$\boxed{\delta_f = \frac{1}{C}\Bigl(
+$$\delta_f = \frac{1}{C}\Bigl(
   \ddot{\psi}_d
   - k_1(\dot{\psi} - \dot{\psi}_d)
   - k_0(\psi - \psi_d)
@@ -277,7 +277,7 @@ $$\boxed{\delta_f = \frac{1}{C}\Bigl(
   - k_i \eta
   - A\dot{\psi}
   - B(\dot{Y} - v_x\psi)
-\Bigr)}$$
+\Bigr)$$
 
 | Symbol | Description |
 |--------|-------------|
